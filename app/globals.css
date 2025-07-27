@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground: 0, 0, 0;
+  --background: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground: 255, 255, 255;
+    --background: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground));
+  background: rgb(var(--background));
+  cursor: none;
+}
+
+@layer base {
+  .glitch-text {
+    position: relative;
+    display: inline-block;
+  }
+
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .glitch-text::before {
+    left: 2px;
+    text-shadow: -1px 0 red;
+    animation: glitch-animation 3s infinite linear alternate-reverse;
+  }
+
+  .glitch-text::after {
+    left: -2px;
+    text-shadow: 1px 0 blue;
+    animation: glitch-animation 2s infinite linear alternate-reverse;
+  }
+
+  @keyframes glitch-animation {
+    0% {
+      clip-path: inset(29% 0 25% 0);
+    }
+    5% {
+      clip-path: inset(9% 0 38% 0);
+    }
+    10% {
+      clip-path: inset(96% 0 1% 0);
+    }
+    15% {
+      clip-path: inset(75% 0 23% 0);
+    }
+    20% {
+      clip-path: inset(46% 0 50% 0);
+    }
+    25% {
+      clip-path: inset(3% 0 46% 0);
+    }
+    30% {
+      clip-path: inset(82% 0 2% 0);
+    }
+    35% {
+      clip-path: inset(88% 0 1% 0);
+    }
+    40% {
+      clip-path: inset(91% 0 8% 0);
+    }
+    45% {
+      clip-path: inset(96% 0 2% 0);
+    }
+    50% {
+      clip-path: inset(59% 0 38% 0);
+    }
+    55% {
+      clip-path: inset(41% 0 53% 0);
+    }
+    60% {
+      clip-path: inset(21% 0 47% 0);
+    }
+    65% {
+      clip-path: inset(89% 0 4% 0);
+    }
+    70% {
+      clip-path: inset(1% 0 95% 0);
+    }
+    75% {
+      clip-path: inset(86% 0 4% 0);
+    }
+    80% {
+      clip-path: inset(95% 0 5% 0);
+    }
+    85% {
+      clip-path: inset(54% 0 36% 0);
+    }
+    90% {
+      clip-path: inset(70% 0 27% 0);
+    }
+    95% {
+      clip-path: inset(6% 0 16% 0);
+    }
+    100% {
+      clip-path: inset(95% 0 2% 0);
+    }
+  }
+
+  .form-input-brutalist {
+    @apply bg-transparent border border-white/30 p-4 w-full focus:border-red-500 outline-none transition-colors;
+  }
+
+  .form-label-brutalist {
+    @apply absolute top-0 left-4 transform -translate-y-1/2 bg-black px-2 text-sm transition-colors;
+  }
+
+  .contact-link {
+    @apply relative inline-block;
+  }
+
+  .contact-link::after {
+    content: "";
+    @apply absolute left-0 bottom-0 w-0 h-[1px] bg-red-500 transition-all duration-300;
+  }
+
+  .contact-link:hover::after {
+    @apply w-full;
+  }
+
+  .brutalist-button {
+    @apply relative overflow-hidden;
+  }
+
+  .brutalist-button::before {
+    content: "";
+    @apply absolute inset-0 bg-red-500 transform translate-x-full transition-transform duration-300;
+  }
+
+  .brutalist-button:hover::before {
+    @apply translate-x-0;
+  }
+}
+
+/* Add a new keyframe animation for the form focus effect */
+@keyframes formFocusIn {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes formFocusOut {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+/* Add styles for the floating labels */
+.form-group {
+  position: relative;
+}
+
+.form-group label {
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  transform: translateY(-50%);
+  background-color: black;
+  padding: 0 0.5rem;
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+}
+
+.form-group input:focus + label,
+.form-group textarea:focus + label {
+  color: #ef4444; /* red-500 */
+}
+
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+}
