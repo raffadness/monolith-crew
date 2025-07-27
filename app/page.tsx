@@ -1,49 +1,55 @@
-"use client"
+"use client";
 
-import { useRef, useState, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { ArrowUpRight, ArrowRight, ArrowDown } from "lucide-react"
+import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowUpRight, ArrowRight, ArrowDown } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import ParallaxText from "@/components/parallax-text"
-import FloatingElement from "@/components/floating-element"
+import { Button } from "@/components/ui/button";
+import ParallaxText from "@/components/parallax-text";
+import FloatingElement from "@/components/floating-element";
 
 export default function Home() {
-  const [activeProject, setActiveProject] = useState<number | null>(null)
-  const heroRef = useRef(null)
-  const [scrollY, setScrollY] = useState(0)
+  const [activeProject, setActiveProject] = useState<number | null>(null);
+  const heroRef = useRef(null);
+  const [scrollY, setScrollY] = useState(0);
 
   // Track scroll position for various effects
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY)
-    }
+      setScrollY(window.scrollY);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
-  })
+  });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1])
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1]);
 
   return (
     <main>
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-20">
+      <section
+        ref={heroRef}
+        className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-20"
+      >
         {/* Background elements */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {/* Main background image with effects */}
-          <motion.div style={{ y, opacity, scale }} className="absolute inset-0 z-0">
+          <motion.div
+            style={{ y, opacity, scale }}
+            className="absolute inset-0 z-0"
+          >
             <Image
-              src="/placeholder.svg?height=1080&width=1920"
+              src="/hero.png"
               alt="Hero Background"
               fill
               className="object-cover object-center brightness-50"
@@ -90,13 +96,17 @@ export default function Home() {
               <div className="relative">
                 {/* Decorative elements */}
                 <div className="absolute -top-12 -left-4 text-xs border border-white/50 px-2 py-1 rotate-12">
-                  EST.2024
+                  EST.2025
                 </div>
 
                 {/* Main heading with creative treatment */}
                 <h1 className="text-6xl md:text-[8rem] font-bold leading-none tracking-tighter mb-6">
                   <div className="overflow-hidden">
-                    <motion.div initial={{ y: 100 }} animate={{ y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}>
+                    <motion.div
+                      initial={{ y: 100 }}
+                      animate={{ y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.3 }}
+                    >
                       MONO<span className="text-red-500">L</span>ITH
                     </motion.div>
                   </div>
@@ -107,14 +117,21 @@ export default function Home() {
                       transition={{ duration: 0.8, delay: 0.5 }}
                       className="flex items-center"
                     >
-                      CR<span className="inline-block w-12 h-1 bg-white mx-2"></span>EW
+                      CR
+                      <span className="inline-block w-12 h-1 bg-white mx-2"></span>
+                      EW
                     </motion.div>
                   </div>
                   <div className="overflow-hidden">
-                    <motion.div initial={{ y: 100 }} animate={{ y: 0 }} transition={{ duration: 0.8, delay: 0.7 }}>
+                    <motion.div
+                      initial={{ y: 100 }}
+                      animate={{ y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.7 }}
+                    >
                       SZ
                       <span className="relative inline-block">
-                        N<span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500"></span>
+                        N
+                        <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500"></span>
                       </span>
                     </motion.div>
                   </div>
@@ -138,10 +155,13 @@ export default function Home() {
               className="md:col-span-5 md:col-start-8"
             >
               <div className="border-l-4 border-red-500 pl-6 mb-8">
-                <p className="text-xl md:text-2xl mb-6">Fits so fire they're living rent-free in your head. No cap.</p>
+                <p className="text-xl md:text-2xl mb-6">
+                  Fits so fire they're living rent-free in your head. No cap.
+                </p>
                 <p className="text-white/70">
-                  Serving main character energy through raw, unfiltered visual language. We're not just designing -
-                  we're creating a whole vibe.
+                  Serving main character energy through raw, unfiltered visual
+                  language. We're not just designing - we're creating a whole
+                  vibe.
                 </p>
               </div>
 
@@ -173,30 +193,11 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center"
-        >
-          <div className="text-sm tracking-widest mb-2">SCROLL</div>
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
-            className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center pt-1"
-          >
-            <motion.div
-              animate={{ height: [0, 8, 0] }}
-              transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
-              className="w-1 bg-white/80 rounded-full"
-            ></motion.div>
-          </motion.div>
-        </motion.div>
-
         {/* Bottom marquee */}
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <ParallaxText baseVelocity={-5}>MONOLITH • CREW • STREETWEAR • 2024 •</ParallaxText>
+          <ParallaxText baseVelocity={-5}>
+            MONOLITH • CREW • STREETWEAR • 2025 •
+          </ParallaxText>
         </div>
       </section>
 
@@ -211,7 +212,9 @@ export default function Home() {
             className="mb-16 relative"
           >
             <h2 className="text-6xl md:text-8xl font-bold tracking-tighter relative inline-block">
-              <span className="absolute -top-8 -left-4 text-xs border border-white/50 px-2 py-1 rotate-12">02</span>
+              <span className="absolute -top-8 -left-4 text-xs border border-white/50 px-2 py-1 rotate-12">
+                02
+              </span>
               FEATURED WORK
               <span className="absolute -bottom-2 -right-2 w-4 h-4 bg-red-500"></span>
             </h2>
@@ -221,9 +224,27 @@ export default function Home() {
           {/* Featured projects grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {[
-              { id: 1, title: "URBAN DECAY", category: "LOOKBOOK", year: "2024" },
-              { id: 2, title: "CONCRETE JUNGLE", category: "CAMPAIGN", year: "2023" },
-              { id: 3, title: "DIGITAL DYSTOPIA", category: "EDITORIAL", year: "2024" },
+              {
+                id: 1,
+                title: "URBAN DECAY",
+                category: "LOOKBOOK",
+                year: "2025",
+                image: "/urbandecay/urban1.png",
+              },
+              {
+                id: 2,
+                title: "CONCRETE JUNGLE",
+                category: "CAMPAIGN",
+                year: "2023",
+                image: "/concretejungle/concrete1.png",
+              },
+              {
+                id: 3,
+                title: "DIGITAL DYSTOPIA",
+                category: "EDITORIAL",
+                year: "2025",
+                image: "/digitaldystopia/digital1.png",
+              },
             ].map((project, index) => (
               <motion.div
                 key={project.id}
@@ -236,7 +257,7 @@ export default function Home() {
                 <Link href={`/projects`} className="block">
                   <div className="aspect-[4/3] relative overflow-hidden mb-4">
                     <Image
-                      src={`/placeholder.svg?height=800&width=1200`}
+                      src={project.image}
                       alt={project.title}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -250,7 +271,9 @@ export default function Home() {
                       </Button>
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold mb-1 group-hover:text-red-500 transition-colors">{project.title}</h3>
+                  <h3 className="text-xl font-bold mb-1 group-hover:text-red-500 transition-colors">
+                    {project.title}
+                  </h3>
                   <p className="text-white/70">{project.category}</p>
                 </Link>
               </motion.div>
@@ -280,7 +303,9 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">READY TO CREATE SOMETHING FIRE?</h2>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              READY TO CREATE SOMETHING FIRE?
+            </h2>
             <p className="text-xl md:text-2xl max-w-2xl mx-auto mb-8 text-black/80">
               Let's link up and break the internet together. No cap.
             </p>
@@ -306,5 +331,5 @@ export default function Home() {
         />
       </section>
     </main>
-  )
+  );
 }

@@ -1,25 +1,25 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { Instagram, Twitter, Linkedin, ArrowUp, Send } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import FloatingElement from "./floating-element"
+import { useState } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { Instagram, Twitter, Linkedin, ArrowUp, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import FloatingElement from "./floating-element";
 
 export default function BrutalFooter() {
-  const [email, setEmail] = useState("")
-  const [isHovered, setIsHovered] = useState(false)
+  const [email, setEmail] = useState("");
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // Handle newsletter signup
-    console.log("Newsletter signup:", email)
-    setEmail("")
+    console.log("Newsletter signup:", email);
+    setEmail("");
     // Show success message or toast
-  }
+  };
 
   return (
     <footer className="relative bg-black text-white overflow-hidden">
@@ -51,7 +51,9 @@ export default function BrutalFooter() {
             <Link href="/" className="inline-block mb-6">
               <div className="flex items-center">
                 <div className="relative">
-                  <span className="text-3xl font-bold tracking-tighter">MONOLITH CREW</span>
+                  <span className="text-3xl font-bold tracking-tighter">
+                    MONOLITH CREW
+                  </span>
                   <div className="absolute -bottom-1 left-0 w-full h-[2px]">
                     <div className="w-full h-full bg-red-500"></div>
                   </div>
@@ -60,8 +62,8 @@ export default function BrutalFooter() {
             </Link>
 
             <p className="text-white/70 mb-8 max-w-xs">
-              Straight fire fits that live rent-free in your head. No cap, we're pushing boundaries and serving main
-              character energy.
+              Straight fire fits that live rent-free in your head. No cap, we're
+              pushing boundaries and serving main character energy.
             </p>
 
             <div className="flex space-x-4">
@@ -127,7 +129,9 @@ export default function BrutalFooter() {
               </div>
             </h3>
 
-            <p className="text-white/70 mb-4">Drop your email for the latest tea and exclusive drops.</p>
+            <p className="text-white/70 mb-4">
+              Drop your email for the latest tea and exclusive drops.
+            </p>
 
             <form onSubmit={handleSubmit} className="relative">
               <div className="relative">
@@ -157,10 +161,16 @@ export default function BrutalFooter() {
           </p>
 
           <div className="flex items-center space-x-6">
-            <Link href="/privacy" className="text-sm text-white/50 hover:text-white transition-colors">
+            <Link
+              href="/privacy"
+              className="text-sm text-white/50 hover:text-white transition-colors"
+            >
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-sm text-white/50 hover:text-white transition-colors">
+            <Link
+              href="/terms"
+              className="text-sm text-white/50 hover:text-white transition-colors"
+            >
               Terms of Service
             </Link>
 
@@ -186,8 +196,8 @@ export default function BrutalFooter() {
         scaleFactor={0.5}
         className="absolute bottom-0 right-0 text-[200px] font-bold text-white/3 pointer-events-none select-none leading-none opacity-10 hidden md:block"
       >
-        2024
+        2025
       </FloatingElement>
     </footer>
-  )
+  );
 }

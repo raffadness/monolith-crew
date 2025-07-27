@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { ArrowUpRight, Instagram, Twitter, Linkedin } from "lucide-react"
+import { useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowUpRight, Instagram, Twitter, Linkedin } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import FloatingElement from "@/components/floating-element"
-import ScrollSection from "@/components/scroll-section"
+import { Button } from "@/components/ui/button";
+import FloatingElement from "@/components/floating-element";
+import ScrollSection from "@/components/scroll-section";
 
 // Team members data
 const teamMembers = [
   {
-    name: "Alex Chen",
+    name: "Liam Carter",
     role: "Creative Director",
     bio: "Vibing since '95. Bringing the heat with designs that live rent-free in your head. No cap.",
-    image: "/placeholder.svg?height=600&width=600",
+    image: "/team/boy1.jpeg",
     social: {
       instagram: "#",
       twitter: "#",
@@ -24,10 +24,10 @@ const teamMembers = [
     },
   },
   {
-    name: "Jordan Taylor",
+    name: "Ella Harper",
     role: "Lead Designer",
     bio: "Design girlboss energy. Creating fits so fire they're straight up illegal. Period.",
-    image: "/placeholder.svg?height=600&width=600",
+    image: "/team/girl1.jpeg",
     social: {
       instagram: "#",
       twitter: "#",
@@ -35,10 +35,10 @@ const teamMembers = [
     },
   },
   {
-    name: "Morgan Lee",
+    name: "Zoe Grayson",
     role: "Art Director",
     bio: "Chronically online art kid. Serving main character energy through visual storytelling.",
-    image: "/placeholder.svg?height=600&width=600",
+    image: "/team/girl2.jpeg",
     social: {
       instagram: "#",
       twitter: "#",
@@ -46,27 +46,28 @@ const teamMembers = [
     },
   },
   {
-    name: "Riley Johnson",
+    name: "Nolan Reed",
     role: "Photographer",
     bio: "Capturing vibes since 2010. If the shot doesn't slap, we don't post it. Simple as that.",
-    image: "/placeholder.svg?height=600&width=600",
+    image: "/team/boy2.jpeg",
     social: {
       instagram: "#",
       twitter: "#",
       linkedin: "#",
     },
   },
-]
+];
 
 // Timeline data
 const timeline = [
   {
-    year: "2024",
+    year: "2025",
     title: "MONOLITH CREW IS BORN",
-    description: "Started with a vision to create designs that break the internet. No cap, just vibes.",
+    description:
+      "Started with a vision to create designs that break the internet. No cap, just vibes.",
   },
   {
-    year: "2024",
+    year: "2025",
     title: "FIRST MAJOR CLIENT",
     description:
       "Landed our first major client and delivered a project that had everyone shook. The streets were talking.",
@@ -74,35 +75,41 @@ const timeline = [
   {
     year: "2025",
     title: "STUDIO EXPANSION",
-    description: "Leveled up with a bigger studio space in downtown. More room for the creative chaos to unfold.",
+    description:
+      "Leveled up with a bigger studio space in downtown. More room for the creative chaos to unfold.",
   },
   {
     year: "2025",
     title: "AWARD WINNING WORK",
-    description: "Our Urban Decay project won multiple design awards. The industry was not ready for this heat.",
+    description:
+      "Our Urban Decay project won multiple design awards. The industry was not ready for this heat.",
   },
   {
     year: "2026",
     title: "GLOBAL RECOGNITION",
-    description: "Started working with international clients. The Monolith Crew aesthetic went worldwide.",
+    description:
+      "Started working with international clients. The Monolith Crew aesthetic went worldwide.",
   },
-]
+];
 
 // Values data
 const values = [
   {
     title: "AUTHENTICITY",
-    description: "We keep it 100, always. No fake vibes or borrowed aesthetics.",
+    description:
+      "We keep it 100, always. No fake vibes or borrowed aesthetics.",
     icon: "✓",
   },
   {
     title: "DISRUPTION",
-    description: "We don't follow trends, we create them. Breaking the internet is our love language.",
+    description:
+      "We don't follow trends, we create them. Breaking the internet is our love language.",
     icon: "✗",
   },
   {
     title: "COMMUNITY",
-    description: "We're building more than a brand - we're creating a whole movement.",
+    description:
+      "We're building more than a brand - we're creating a whole movement.",
     icon: "♦",
   },
   {
@@ -110,17 +117,17 @@ const values = [
     description: "If it's been done before, we're not interested. Period.",
     icon: "△",
   },
-]
+];
 
 export default function AboutPage() {
-  const containerRef = useRef(null)
+  const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
-  })
+  });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100])
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 100])
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
   return (
     <main className="pt-24 pb-16" ref={containerRef}>
@@ -134,13 +141,16 @@ export default function AboutPage() {
             className="relative z-10"
           >
             <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-6 relative inline-block">
-              <span className="absolute -top-8 -left-4 text-xs border border-white/50 px-2 py-1 rotate-12">ABOUT</span>
+              <span className="absolute -top-8 -left-4 text-xs border border-white/50 px-2 py-1 rotate-12">
+                ABOUT
+              </span>
               VIBE CHECK
               <span className="absolute -bottom-2 -right-2 w-4 h-4 bg-red-500"></span>
             </h1>
             <div className="w-full h-[1px] bg-white/20 my-8"></div>
             <p className="text-xl md:text-2xl max-w-2xl text-white/70">
-              Get to know the squad behind the sauce. We're not just a design studio — we're a whole movement.
+              Get to know the squad behind the sauce. We're not just a design
+              studio — we're a whole movement.
             </p>
           </motion.div>
 
@@ -163,15 +173,14 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
             <div className="md:col-span-5 md:col-start-1">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="relative"
-              >
+              <motion.div transition={{ duration: 0.6 }} className="relative">
                 <div className="aspect-[4/5] relative overflow-hidden">
-                  <Image src="/placeholder.svg?height=1000&width=800" alt="Our Studio" fill className="object-cover" />
+                  <Image
+                    src="/about.png"
+                    alt="Our Studio"
+                    fill
+                    className="object-cover scale-150"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                 </div>
 
@@ -189,8 +198,6 @@ export default function AboutPage() {
 
             <div className="md:col-span-6 md:col-start-7">
               <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
               >
@@ -201,21 +208,27 @@ export default function AboutPage() {
 
                 <div className="space-y-6 text-lg">
                   <p>
-                    Born in 2024, Monolith Crew started as a collective of creative misfits with one mission: to create
-                    visual identities that hit different. No cap.
+                    Born in 2025, Monolith Crew started as a collective of
+                    creative misfits with one mission: to create visual
+                    identities that hit different. No cap.
                   </p>
                   <p>
-                    We were tired of seeing the same recycled aesthetics everywhere. The internet was becoming an echo
-                    chamber of borrowed ideas and safe design choices. So we decided to choose violence instead.
+                    We were tired of seeing the same recycled aesthetics
+                    everywhere. The internet was becoming an echo chamber of
+                    borrowed ideas and safe design choices. So we decided to
+                    choose violence instead.
                   </p>
                   <p>
-                    Our approach combines digital experimentation with brutalist principles to create work that demands
-                    attention and lives rent-free in your head. We're not interested in blending in — we're here to
-                    break the internet.
+                    Our approach combines digital experimentation with brutalist
+                    principles to create work that demands attention and lives
+                    rent-free in your head. We're not interested in blending in
+                    — we're here to break the internet.
                   </p>
                   <p>
-                    Today, we're a growing studio working with clients who share our vision for disruptive design and
-                    authentic expression. The aesthetic is giving main character energy, and we're just getting started.
+                    Today, we're a growing studio working with clients who share
+                    our vision for disruptive design and authentic expression.
+                    The aesthetic is giving main character energy, and we're
+                    just getting started.
                   </p>
                 </div>
 
@@ -251,7 +264,8 @@ export default function AboutPage() {
               <span className="absolute -bottom-2 -right-2 w-3 h-3 bg-red-500"></span>
             </h2>
             <p className="text-xl max-w-2xl mx-auto text-white/70">
-              These aren't just words on a wall — they're the blueprint for everything we create.
+              These aren't just words on a wall — they're the blueprint for
+              everything we create.
             </p>
           </motion.div>
 
@@ -303,7 +317,8 @@ export default function AboutPage() {
               <span className="absolute -bottom-2 -right-2 w-3 h-3 bg-red-500"></span>
             </h2>
             <p className="text-xl max-w-2xl text-white/70">
-              Meet the creative minds behind the sauce. Each bringing their own unique flavor to the table.
+              Meet the creative minds behind the sauce. Each bringing their own
+              unique flavor to the table.
             </p>
           </motion.div>
 
@@ -359,8 +374,14 @@ export default function AboutPage() {
         </div>
 
         {/* Decorative elements */}
-        <motion.div style={{ y: y1 }} className="absolute -right-20 top-0 w-40 h-[120%] bg-white/2 -rotate-12" />
-        <motion.div style={{ y: y2 }} className="absolute -left-20 top-0 w-20 h-[120%] bg-white/3 rotate-12" />
+        <motion.div
+          style={{ y: y1 }}
+          className="absolute -right-20 top-0 w-40 h-[120%] bg-white/2 -rotate-12"
+        />
+        <motion.div
+          style={{ y: y2 }}
+          className="absolute -left-20 top-0 w-20 h-[120%] bg-white/3 rotate-12"
+        />
       </ScrollSection>
 
       {/* CTA Section */}
@@ -372,7 +393,9 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">READY TO CREATE SOMETHING FIRE?</h2>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              READY TO CREATE SOMETHING FIRE?
+            </h2>
             <p className="text-xl md:text-2xl max-w-2xl mx-auto mb-8 text-black/80">
               Let's link up and break the internet together. No cap.
             </p>
@@ -398,5 +421,5 @@ export default function AboutPage() {
         />
       </ScrollSection>
     </main>
-  )
+  );
 }

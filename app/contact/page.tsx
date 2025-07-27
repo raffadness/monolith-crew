@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowUpRight,
   Send,
@@ -15,11 +15,11 @@ import {
   MapPin,
   ChevronDown,
   ChevronUp,
-} from "lucide-react"
+} from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import FloatingElement from "@/components/floating-element"
-import ScrollSection from "@/components/scroll-section"
+import { Button } from "@/components/ui/button";
+import FloatingElement from "@/components/floating-element";
+import ScrollSection from "@/components/scroll-section";
 
 // FAQ data
 const faqs = [
@@ -48,39 +48,45 @@ const faqs = [
     answer:
       "We work with clients globally. While we're based in NYC, we've collaborated with brands from Tokyo to Berlin. Distance is just a number in the digital age.",
   },
-]
+];
 
 export default function ContactPage() {
-  const [activeAccordion, setActiveAccordion] = useState<number | null>(null)
+  const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
   const [formState, setFormState] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
     budget: "",
-  })
-  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
-  const containerRef = useRef(null)
+  });
+  const [formStatus, setFormStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+  const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
-  })
+  });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -50])
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 50])
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 50]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    setFormState((prev) => ({ ...prev, [name]: value }))
-  }
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormState((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setFormStatus("submitting")
+    e.preventDefault();
+    setFormStatus("submitting");
 
     // Simulate form submission
     setTimeout(() => {
-      setFormStatus("success")
+      setFormStatus("success");
       // Reset form after success
       setTimeout(() => {
         setFormState({
@@ -89,15 +95,15 @@ export default function ContactPage() {
           subject: "",
           message: "",
           budget: "",
-        })
-        setFormStatus("idle")
-      }, 3000)
-    }, 1500)
-  }
+        });
+        setFormStatus("idle");
+      }, 3000);
+    }, 1500);
+  };
 
   const toggleAccordion = (index: number) => {
-    setActiveAccordion(activeAccordion === index ? null : index)
-  }
+    setActiveAccordion(activeAccordion === index ? null : index);
+  };
 
   return (
     <main className="pt-24 pb-16" ref={containerRef}>
@@ -119,7 +125,8 @@ export default function ContactPage() {
             </h1>
             <div className="w-full h-[1px] bg-white/20 my-8"></div>
             <p className="text-xl md:text-2xl max-w-2xl text-white/70">
-              Ready to create something that breaks the internet? Slide into our DMs and let's make it happen.
+              Ready to create something that breaks the internet? Slide into our
+              DMs and let's make it happen.
             </p>
           </motion.div>
 
@@ -271,7 +278,11 @@ export default function ContactPage() {
                     className="w-full sm:w-auto bg-white text-black hover:bg-gray-200 rounded-none py-6 px-12 relative overflow-hidden group"
                   >
                     <span className="relative z-10 flex items-center justify-center gap-2">
-                      {formStatus === "submitting" ? "SENDING..." : formStatus === "success" ? "SENT!" : "SEND IT"}
+                      {formStatus === "submitting"
+                        ? "SENDING..."
+                        : formStatus === "success"
+                        ? "SENT!"
+                        : "SEND IT"}
                       {formStatus === "idle" && (
                         <Send className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                       )}
@@ -307,21 +318,26 @@ export default function ContactPage() {
             >
               <div className="border border-white/20 p-6 relative">
                 <div className="absolute top-0 right-0 w-12 h-12 bg-white/5 -translate-y-1/2 translate-x-1/2 flex items-center justify-center">
-                  <span className="text-xs font-mono">EST.2024</span>
+                  <span className="text-xs font-mono">EST.2025</span>
                 </div>
 
-                <h3 className="text-2xl font-bold mb-6 glitch-text" data-text="GET IN TOUCH">
+                <h3
+                  className="text-2xl font-bold mb-6 glitch-text"
+                  data-text="GET IN TOUCH"
+                >
                   GET IN TOUCH
                 </h3>
 
                 <p className="text-xl mb-8 border-l-4 border-red-500 pl-4">
-                  We're always down to chat about new projects, collabs, or just to vibe. Hit us up through any of these
-                  channels.
+                  We're always down to chat about new projects, collabs, or just
+                  to vibe. Hit us up through any of these channels.
                 </p>
 
                 <div className="space-y-6">
                   <div className="flex flex-col">
-                    <span className="text-xs text-gray-400 uppercase tracking-wider mb-1">Email</span>
+                    <span className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+                      Email
+                    </span>
                     <a
                       href="mailto:hello@monolithcrew.com"
                       className="text-lg hover:text-red-500 transition-colors flex items-center group"
@@ -332,7 +348,9 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex flex-col">
-                    <span className="text-xs text-gray-400 uppercase tracking-wider mb-1">Phone</span>
+                    <span className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+                      Phone
+                    </span>
                     <a
                       href="tel:+12125551234"
                       className="text-lg hover:text-red-500 transition-colors flex items-center group"
@@ -343,7 +361,9 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex flex-col">
-                    <span className="text-xs text-gray-400 uppercase tracking-wider mb-1">Social</span>
+                    <span className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+                      Social
+                    </span>
                     <div className="flex space-x-4 mt-2">
                       <a
                         href="#"
@@ -370,7 +390,9 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex flex-col">
-                    <span className="text-xs text-gray-400 uppercase tracking-wider mb-1">Location</span>
+                    <span className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+                      Location
+                    </span>
                     <p className="text-lg flex items-start">
                       <MapPin className="mr-2 h-5 w-5 mt-1 flex-shrink-0" />
                       <span>
@@ -383,7 +405,9 @@ export default function ContactPage() {
                 </div>
 
                 <div className="mt-12 pt-8 border-t border-white/20">
-                  <h4 className="text-sm uppercase tracking-wider mb-4">Working Hours</h4>
+                  <h4 className="text-sm uppercase tracking-wider mb-4">
+                    Working Hours
+                  </h4>
                   <div className="grid grid-cols-2 gap-2">
                     <div>
                       <span className="text-xs text-gray-400">Mon-Fri</span>
@@ -416,7 +440,8 @@ export default function ContactPage() {
               <span className="absolute -bottom-2 -right-2 w-3 h-3 bg-red-500"></span>
             </h2>
             <p className="text-lg text-white/70">
-              Got questions? We've got answers. If you don't see what you're looking for, just hit us up.
+              Got questions? We've got answers. If you don't see what you're
+              looking for, just hit us up.
             </p>
           </motion.div>
 
@@ -442,7 +467,11 @@ export default function ContactPage() {
                   )}
                 </button>
                 <div
-                  className={`overflow-hidden transition-all duration-300 ${activeAccordion === index ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
+                  className={`overflow-hidden transition-all duration-300 ${
+                    activeAccordion === index
+                      ? "max-h-96 opacity-100"
+                      : "max-h-0 opacity-0"
+                  }`}
                 >
                   <div className="p-6 pt-0 text-white/70">{faq.answer}</div>
                 </div>
@@ -461,7 +490,9 @@ export default function ContactPage() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">LET'S CREATE SOMETHING ICONIC</h2>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              LET'S CREATE SOMETHING ICONIC
+            </h2>
             <p className="text-xl md:text-2xl max-w-2xl mx-auto mb-8 text-black/80">
               Ready to break the internet together? The collab szn is now.
             </p>
@@ -498,5 +529,5 @@ export default function ContactPage() {
         />
       </ScrollSection>
     </main>
-  )
+  );
 }

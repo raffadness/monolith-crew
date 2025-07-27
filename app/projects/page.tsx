@@ -1,12 +1,26 @@
-"use client"
+"use client";
 
-import { useState, useRef, useEffect } from "react"
-import Image from "next/image"
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
-import { ArrowUpRight, ArrowLeft, Filter, ChevronDown, ExternalLink, Clock, User, Tag } from "lucide-react"
+import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import {
+  ArrowUpRight,
+  ArrowLeft,
+  Filter,
+  ChevronDown,
+  ExternalLink,
+  Clock,
+  User,
+  Tag,
+} from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import FloatingElement from "@/components/floating-element"
+import { Button } from "@/components/ui/button";
+import FloatingElement from "@/components/floating-element";
 
 // Project data
 const projects = [
@@ -15,7 +29,7 @@ const projects = [
     title: "URBAN DECAY",
     slug: "urban-decay",
     category: "LOOKBOOK",
-    year: "2024",
+    year: "2025",
     client: "Streetwear Co.",
     tags: ["Photography", "Art Direction", "Styling"],
     description:
@@ -23,9 +37,9 @@ const projects = [
     fullDescription:
       "Urban Decay is a visual exploration of the relationship between deteriorating city structures and contemporary streetwear. The collection draws inspiration from abandoned buildings, graffiti, and the raw textures found in urban environments. Each piece in the collection tells a story of resilience and beauty found in unexpected places.\n\nThe lookbook was shot in various locations throughout New York City, capturing the essence of urban decay while showcasing the clothing in its natural environment. The photography style emphasizes contrast, gritty textures, and dramatic lighting to complement the collection's aesthetic.",
     images: [
-      "/placeholder.svg?height=800&width=1200",
-      "/placeholder.svg?height=800&width=1200",
-      "/placeholder.svg?height=800&width=1200",
+      "/urbandecay/urban1.png",
+      "/urbandecay/urban1.png",
+      "/urbandecay/urban1.png",
     ],
     featured: true,
   },
@@ -42,9 +56,9 @@ const projects = [
     fullDescription:
       "Concrete Jungle is a comprehensive campaign that celebrates the raw energy and diversity of urban environments. The project encompassed branding, digital assets, and print materials for Urban Collective's flagship store launch.\n\nThe campaign draws inspiration from brutalist architecture, industrial materials, and the chaotic beauty of city life. We created a visual language that feels both contemporary and timeless, using a combination of bold typography, raw textures, and striking photography.\n\nThe campaign successfully positioned Urban Collective as a forward-thinking brand with strong connections to urban culture and architectural design.",
     images: [
-      "/placeholder.svg?height=800&width=1200",
-      "/placeholder.svg?height=800&width=1200",
-      "/placeholder.svg?height=800&width=1200",
+      "/concretejungle/concrete1.png",
+      "/concretejungle/concrete1.png",
+      "/concretejungle/concrete1.png",
     ],
     featured: true,
   },
@@ -53,7 +67,7 @@ const projects = [
     title: "DIGITAL DYSTOPIA",
     slug: "digital-dystopia",
     category: "EDITORIAL",
-    year: "2024",
+    year: "2025",
     client: "Future Magazine",
     tags: ["Digital Design", "3D", "Animation"],
     description:
@@ -61,9 +75,9 @@ const projects = [
     fullDescription:
       "Digital Dystopia is an experimental editorial that explores the increasingly blurred lines between physical and digital fashion. Created for Future Magazine's special issue on technology, this project combines traditional photography with 3D modeling, digital manipulation, and animation.\n\nThe concept revolves around a near-future scenario where digital fashion has become as important as physical clothing. We created a series of images that depict this dystopian yet fascinating world, where garments exist simultaneously in physical and digital realms.\n\nThe editorial received critical acclaim for its innovative approach to fashion photography and its thought-provoking commentary on the future of the fashion industry.",
     images: [
-      "/placeholder.svg?height=800&width=1200",
-      "/placeholder.svg?height=800&width=1200",
-      "/placeholder.svg?height=800&width=1200",
+      "/digitaldystopia/digital1.png?height=800&width=1200",
+      "/digitaldystopia/digital1.png?height=800&width=1200",
+      "/digitaldystopia/digital1.png?height=800&width=1200",
     ],
     featured: true,
   },
@@ -80,9 +94,9 @@ const projects = [
     fullDescription:
       "Street Rebellion is a lookbook that celebrates the power of clothing as a medium for personal and political expression. Created for Rebel Apparel's SS23 collection, this project captures the authentic spirit of youth culture and activism.\n\nThe lookbook features real people rather than professional models, each with their own unique story and perspective. Shot on location during actual street protests and community events, the imagery has an authentic, documentary-like quality that sets it apart from traditional fashion photography.\n\nThe styling emphasizes individuality and self-expression, showing how Rebel Apparel's pieces can be incorporated into personal style to make a statement. The result is a lookbook that feels more like a cultural artifact than a commercial product.",
     images: [
-      "/placeholder.svg?height=800&width=1200",
-      "/placeholder.svg?height=800&width=1200",
-      "/placeholder.svg?height=800&width=1200",
+      "/streetrebellion/street1.png",
+      "/streetrebellion/street1.png",
+      "/streetrebellion/street1.png",
     ],
     featured: false,
   },
@@ -91,7 +105,7 @@ const projects = [
     title: "NEON NIGHTS",
     slug: "neon-nights",
     category: "CAMPAIGN",
-    year: "2024",
+    year: "2025",
     client: "Glow Streetwear",
     tags: ["Photography", "Lighting Design", "Art Direction"],
     description:
@@ -99,9 +113,9 @@ const projects = [
     fullDescription:
       "Neon Nights is a campaign that explores the relationship between streetwear and nightlife culture. Created for Glow Streetwear's illuminated clothing line, this project uses innovative lighting techniques to showcase garments that literally light up the darkness.\n\nThe campaign was shot exclusively at night in various urban locations, using a combination of neon signs, LED lighting, and the garments' own illumination to create striking visual compositions. The photography emphasizes the contrast between darkness and light, creating a sense of drama and energy.\n\nIn addition to traditional campaign imagery, we created a series of short videos that capture the dynamic nature of the illuminated clothing in motion. These videos were used across social media and in-store displays, creating a cohesive multi-channel campaign.",
     images: [
-      "/placeholder.svg?height=800&width=1200",
-      "/placeholder.svg?height=800&width=1200",
-      "/placeholder.svg?height=800&width=1200",
+      "/neonnights/neon1.png",
+      "/neonnights/neon1.png",
+      "/neonnights/neon1.png",
     ],
     featured: false,
   },
@@ -118,45 +132,49 @@ const projects = [
     fullDescription:
       "Tech Nomads is a conceptual editorial created for Wired Magazine's annual fashion issue. The project explores how advances in wearable technology, sustainable materials, and adaptive design are shaping the future of clothing for increasingly mobile lifestyles.\n\nThe editorial presents a near-future scenario where clothing serves multiple functions beyond aesthetics and protection. Each featured piece incorporates elements of technology, transformability, and sustainability, creating a wardrobe suited for the modern digital nomad.\n\nThe photography style combines elements of traditional fashion photography with tech product photography, creating a unique visual language that emphasizes both the form and function of the featured garments. The locations range from urban environments to natural landscapes, highlighting the adaptability of the clothing.",
     images: [
-      "/placeholder.svg?height=800&width=1200",
-      "/placeholder.svg?height=800&width=1200",
-      "/placeholder.svg?height=800&width=1200",
+      "/technomads/tech1.png",
+      "/technomads/tech1.png",
+      "/technomads/tech1.png",
     ],
     featured: false,
   },
-]
+];
 
 // Filter categories
-const categories = ["ALL", "LOOKBOOK", "CAMPAIGN", "EDITORIAL"]
+const categories = ["ALL", "LOOKBOOK", "CAMPAIGN", "EDITORIAL"];
 
 export default function ProjectsPage() {
-  const [selectedProject, setSelectedProject] = useState<(typeof projects)[0] | null>(null)
-  const [activeCategory, setActiveCategory] = useState("ALL")
-  const [isFilterOpen, setIsFilterOpen] = useState(false)
-  const [filteredProjects, setFilteredProjects] = useState(projects)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll()
-  const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0])
+  const [selectedProject, setSelectedProject] = useState<
+    (typeof projects)[0] | null
+  >(null);
+  const [activeCategory, setActiveCategory] = useState("ALL");
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [filteredProjects, setFilteredProjects] = useState(projects);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll();
+  const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
 
   // Filter projects based on selected category
   useEffect(() => {
     if (activeCategory === "ALL") {
-      setFilteredProjects(projects)
+      setFilteredProjects(projects);
     } else {
-      setFilteredProjects(projects.filter((project) => project.category === activeCategory))
+      setFilteredProjects(
+        projects.filter((project) => project.category === activeCategory)
+      );
     }
-  }, [activeCategory])
+  }, [activeCategory]);
 
   // Handle project selection
   const handleProjectClick = (project: (typeof projects)[0]) => {
-    setSelectedProject(project)
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
+    setSelectedProject(project);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   // Handle back button click
   const handleBackClick = () => {
-    setSelectedProject(null)
-  }
+    setSelectedProject(null);
+  };
 
   return (
     <main className="pt-24 pb-16">
@@ -178,7 +196,8 @@ export default function ProjectsPage() {
             </h1>
             <div className="w-full h-[1px] bg-white/20 my-8"></div>
             <p className="text-xl md:text-2xl max-w-2xl text-white/70">
-              Check out our fire projects — straight heat that's giving main character energy. No cap.
+              Check out our fire projects — straight heat that's giving main
+              character energy. No cap.
             </p>
           </motion.div>
 
@@ -228,7 +247,9 @@ export default function ProjectsPage() {
                   transition={{ delay: 0.3 }}
                   className="md:col-span-8"
                 >
-                  <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">{selectedProject.title}</h2>
+                  <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
+                    {selectedProject.title}
+                  </h2>
                   <div className="flex flex-wrap items-center gap-4 text-white/70 mb-6">
                     <span className="flex items-center">
                       <Tag className="mr-2 h-4 w-4" />
@@ -258,7 +279,10 @@ export default function ProjectsPage() {
                     <h3 className="text-xl font-bold mb-3">TAGS</h3>
                     <div className="flex flex-wrap gap-2">
                       {selectedProject.tags.map((tag, index) => (
-                        <span key={index} className="px-3 py-1 bg-white/10 text-sm hover:bg-white/20 transition-colors">
+                        <span
+                          key={index}
+                          className="px-3 py-1 bg-white/10 text-sm hover:bg-white/20 transition-colors"
+                        >
                           {tag}
                         </span>
                       ))}
@@ -302,9 +326,11 @@ export default function ProjectsPage() {
                 >
                   <h3 className="text-2xl font-bold mb-6">PROJECT OVERVIEW</h3>
                   <div className="space-y-4 text-white/80">
-                    {selectedProject.fullDescription.split("\n\n").map((paragraph, index) => (
-                      <p key={index}>{paragraph}</p>
-                    ))}
+                    {selectedProject.fullDescription
+                      .split("\n\n")
+                      .map((paragraph, index) => (
+                        <p key={index}>{paragraph}</p>
+                      ))}
                   </div>
                 </motion.div>
 
@@ -330,7 +356,9 @@ export default function ProjectsPage() {
                     </div>
                     <div>
                       <h4 className="text-sm text-white/50 mb-1">SERVICES</h4>
-                      <p className="text-lg">{selectedProject.tags.join(", ")}</p>
+                      <p className="text-lg">
+                        {selectedProject.tags.join(", ")}
+                      </p>
                     </div>
                   </div>
                 </motion.div>
@@ -344,7 +372,10 @@ export default function ProjectsPage() {
                 className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16"
               >
                 {selectedProject.images.slice(1).map((image, index) => (
-                  <div key={index} className="aspect-[4/3] relative overflow-hidden group">
+                  <div
+                    key={index}
+                    className="aspect-[4/3] relative overflow-hidden group"
+                  >
                     <Image
                       src={image || "/placeholder.svg"}
                       alt={`${selectedProject.title} ${index + 2}`}
@@ -352,14 +383,20 @@ export default function ProjectsPage() {
                       className="object-cover"
                     />
                     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <Button className="bg-white text-black hover:bg-gray-200 rounded-none">VIEW LARGER</Button>
+                      <Button className="bg-white text-black hover:bg-gray-200 rounded-none">
+                        VIEW LARGER
+                      </Button>
                     </div>
                   </div>
                 ))}
               </motion.div>
 
               {/* Related projects */}
-              <motion.div initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.9 }}>
+              <motion.div
+                initial={{ y: 40, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.9 }}
+              >
                 <h3 className="text-2xl font-bold mb-8">MORE PROJECTS</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {projects
@@ -408,7 +445,11 @@ export default function ProjectsPage() {
                   >
                     <Filter className="h-4 w-4" />
                     <span>FILTER: {activeCategory}</span>
-                    <ChevronDown className={`h-4 w-4 transition-transform ${isFilterOpen ? "rotate-180" : ""}`} />
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform ${
+                        isFilterOpen ? "rotate-180" : ""
+                      }`}
+                    />
                   </button>
 
                   {isFilterOpen && (
@@ -416,10 +457,14 @@ export default function ProjectsPage() {
                       {categories.map((category) => (
                         <button
                           key={category}
-                          className={`block w-full text-left px-4 py-2 hover:bg-white/10 ${activeCategory === category ? "text-red-500" : "text-white"}`}
+                          className={`block w-full text-left px-4 py-2 hover:bg-white/10 ${
+                            activeCategory === category
+                              ? "text-red-500"
+                              : "text-white"
+                          }`}
                           onClick={() => {
-                            setActiveCategory(category)
-                            setIsFilterOpen(false)
+                            setActiveCategory(category);
+                            setIsFilterOpen(false);
                           }}
                         >
                           {category}
@@ -429,7 +474,9 @@ export default function ProjectsPage() {
                   )}
                 </div>
 
-                <p className="text-white/50">Showing {filteredProjects.length} projects</p>
+                <p className="text-white/50">
+                  Showing {filteredProjects.length} projects
+                </p>
               </div>
             </motion.div>
 
@@ -476,5 +523,5 @@ export default function ProjectsPage() {
         )}
       </div>
     </main>
-  )
+  );
 }
